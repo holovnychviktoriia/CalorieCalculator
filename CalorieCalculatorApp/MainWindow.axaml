@@ -1,9 +1,124 @@
 <Window xmlns="https://github.com/avaloniaui"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
         x:Class="CalorieCalculatorApp.MainWindow"
-        Title="CalorieCalculatorApp">
-    Welcome to Avalonia!!
+        Title="Калькулятор калорій"
+        Width="900" Height="600"
+        MinWidth="700" MinHeight="500"
+        TransparencyLevelHint="AcrylicBlur"
+        Background="#FFFFFF">
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="250"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <StackPanel Grid.Column="0"
+                    Background="#EE2C3E50"
+                    Spacing="10"
+                    Margin="0">
+
+            <TextBlock Text="Головнич Вікторія КН21"
+                       Foreground="White"
+                       FontSize="14"
+                       FontWeight="Bold"
+                       Margin="15,20,15,0"
+                       TextDecorations="Underline"
+                       TextWrapping="Wrap"/>
+
+            <TextBlock Text="Калькулятор калорій"
+                       Foreground="White"
+                       FontSize="18"
+                       FontWeight="Bold"
+                       Margin="15,0,15,20"
+                       TextWrapping="Wrap"/>
+
+            <Button Name="BtnHome" Content="Головна"
+                    Background="#30FFFFFF"
+                    Foreground="White"
+                    BorderBrush="#40FFFFFF"
+                    HorizontalAlignment="Stretch"
+                    Margin="10,0"
+                    Click="BtnHome_Click"/>
+
+            <Button Name="BtnJournal" Content="Журнал харчування"
+                    Background="#30FFFFFF"
+                    Foreground="White"
+                    BorderBrush="#40FFFFFF"
+                    HorizontalAlignment="Stretch"
+                    Margin="10,0"
+                    Click="BtnJournal_Click"/>
+
+            <Button Name="BtnFood" Content="База продуктів"
+                    Background="#30FFFFFF"
+                    Foreground="White"
+                    BorderBrush="#40FFFFFF"
+                    HorizontalAlignment="Stretch"
+                    Margin="10,0"
+                    Click="BtnFood_Click"/>
+
+            <Button Name="BtnSettings" Content="Налаштування"
+                    Background="#30FFFFFF"
+                    Foreground="White"
+                    BorderBrush="#40FFFFFF"
+                    HorizontalAlignment="Stretch"
+                    Margin="10,0"
+                    Click="BtnSettings_Click"/>
+
+        </StackPanel>
+
+        <Border Grid.Column="1"
+                Margin="15"
+                CornerRadius="15"
+                Background="#44FFFFFF"
+                BorderBrush="#30FFFFFF"
+                BorderThickness="1">
+
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="40"/>
+                </Grid.RowDefinitions>
+
+                <StackPanel Grid.Row="0"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center"
+                            Spacing="10">
+
+                    <TextBlock Name="ContentArea"
+                               Text="Вітаємо! Оберіть розділ у меню зліва."
+                               FontSize="18"
+                               Foreground="#1A1A1A"
+                               HorizontalAlignment="Center"/>
+
+                    <TextBox Name="InputProduct"
+                             PlaceholderText="Назва продукту..."
+                             Width="250"/>
+
+                    <TextBox Name="InputCalories"
+                             PlaceholderText="Калорійність (ккал)..."
+                             Width="250"/>
+
+                    <Button Content="Додати продукт"
+                            HorizontalAlignment="Center"
+                            Click="BtnHome_Click"/>
+
+                </StackPanel>
+
+                <Border Grid.Row="1"
+                        Background="Aquamarine"
+                        CornerRadius="15,15,15,15">
+
+                    <TextBlock Name="StatusBar"
+                            Text="Готово"
+                            Foreground="#333"
+                            Padding="10"
+                            FontSize="12"
+                            VerticalAlignment="Center"/>
+                </Border>
+
+            </Grid>
+        </Border>
+
+    </Grid>
 </Window>
