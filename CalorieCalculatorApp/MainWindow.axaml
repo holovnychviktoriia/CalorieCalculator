@@ -80,41 +80,19 @@
                     <RowDefinition Height="40"/>
                 </Grid.RowDefinitions>
 
-                <StackPanel Grid.Row="0"
-                            HorizontalAlignment="Center"
-                            VerticalAlignment="Center"
-                            Spacing="10">
-
-                    <TextBlock Name="ContentArea"
-                               Text="Вітаємо! Оберіть розділ у меню зліва."
-                               FontSize="18"
-                               Foreground="#1A1A1A"
-                               HorizontalAlignment="Center"/>
-
-                    <TextBox Name="InputProduct"
-                             PlaceholderText="Назва продукту..."
-                             Width="250"/>
-
-                    <TextBox Name="InputCalories"
-                             PlaceholderText="Калорійність (ккал)..."
-                             Width="250"/>
-
-                    <Button Content="Додати продукт"
-                            HorizontalAlignment="Center"
-                            Click="BtnHome_Click"/>
-
-                </StackPanel>
+                <ContentControl Grid.Row="0"
+                                Name="MainContent"/>
 
                 <Border Grid.Row="1"
                         Background="Aquamarine"
-                        CornerRadius="15,15,15,15">
+                        CornerRadius="0,0,15,15">
 
                     <TextBlock Name="StatusBar"
-                            Text="Готово"
-                            Foreground="#333"
-                            Padding="10"
-                            FontSize="12"
-                            VerticalAlignment="Center"/>
+                               Text="Готово"
+                               Foreground="#333"
+                               Padding="10"
+                               FontSize="12"
+                               VerticalAlignment="Center"/>
                 </Border>
 
             </Grid>
