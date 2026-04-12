@@ -2,21 +2,105 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              x:Class="CalorieCalculatorApp.SettingsPage">
 
-    <StackPanel HorizontalAlignment="Center"
-                VerticalAlignment="Center"
-                Spacing="15">
+    <DockPanel Margin="20">
 
-        <TextBlock Text="Налаштування"
-                   FontSize="24"
-                   FontWeight="Bold"
-                   Foreground="#2C3E50"
-                   HorizontalAlignment="Center"/>
+        <StackPanel DockPanel.Dock="Top" Margin="0,0,0,20">
+            <TextBlock Text="Налаштування"
+                       FontSize="26"
+                       FontWeight="Bold"
+                       Foreground="#2C3E50"/>
+            <TextBlock Text="Введіть свої дані для розрахунку норми калорій"
+                       FontSize="14"
+                       Foreground="#888"
+                       Margin="0,4,0,0"/>
+        </StackPanel>
 
-        <TextBlock Text="Тут будуть ваші особисті дані та норма калорій."
-                   FontSize="16"
-                   Foreground="#555"
-                   HorizontalAlignment="Center"/>
+        <Border DockPanel.Dock="Top"
+                Background="#F5F5F5"
+                CornerRadius="12"
+                Padding="25">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="150"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
 
-    </StackPanel>
+                <TextBlock Grid.Row="0" Grid.Column="0"
+                           Text="Ім'я:"
+                           VerticalAlignment="Center"
+                           Foreground="#555"
+                           Margin="0,0,0,15"/>
+                <TextBox Grid.Row="0" Grid.Column="1"
+                         PlaceholderText="Введіть ім'я..."
+                         Padding="10,8"
+                         CornerRadius="8"
+                         Margin="0,0,0,15"/>
+
+                <TextBlock Grid.Row="1" Grid.Column="0"
+                           Text="Вік:"
+                           VerticalAlignment="Center"
+                           Foreground="#555"
+                           Margin="0,0,0,15"/>
+                <TextBox Grid.Row="1" Grid.Column="1"
+                         PlaceholderText="Введіть вік..."
+                         Padding="10,8"
+                         CornerRadius="8"
+                         Margin="0,0,0,15"/>
+
+                <TextBlock Grid.Row="2" Grid.Column="0"
+                           Text="Вага (кг):"
+                           VerticalAlignment="Center"
+                           Foreground="#555"
+                           Margin="0,0,0,15"/>
+                <TextBox Grid.Row="2" Grid.Column="1"
+                         PlaceholderText="Введіть вагу..."
+                         Padding="10,8"
+                         CornerRadius="8"
+                         Margin="0,0,0,15"/>
+
+                <TextBlock Grid.Row="3" Grid.Column="0"
+                           Text="Зріст (см):"
+                           VerticalAlignment="Center"
+                           Foreground="#555"
+                           Margin="0,0,0,15"/>
+                <TextBox Grid.Row="3" Grid.Column="1"
+                         PlaceholderText="Введіть зріст..."
+                         Padding="10,8"
+                         CornerRadius="8"
+                         Margin="0,0,0,15"/>
+
+                <TextBlock Grid.Row="4" Grid.Column="0"
+                           Text="Стать:"
+                           VerticalAlignment="Center"
+                           Foreground="#555"
+                           Margin="0,0,0,15"/>
+                <StackPanel Grid.Row="4" Grid.Column="1"
+                            Orientation="Horizontal"
+                            Spacing="15"
+                            Margin="0,0,0,15">
+                    <RadioButton Content="Жінка" IsChecked="True" Foreground="#555"/>
+                    <RadioButton Content="Чоловік" Foreground="#555"/>
+                </StackPanel>
+
+                <Button Grid.Row="5" Grid.Column="1"
+                        Content="Зберегти та розрахувати норму"
+                        Background="#2C3E50"
+                        Foreground="White"
+                        Padding="15,10"
+                        CornerRadius="8"
+                        HorizontalAlignment="Left"/>
+
+            </Grid>
+        </Border>
+
+    </DockPanel>
 
 </UserControl>
