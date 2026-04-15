@@ -2,83 +2,38 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              x:Class="CalorieCalculatorApp.HomePage">
 
-    <DockPanel Margin="20">
+    <StackPanel Margin="20" Spacing="15">
 
-        <StackPanel DockPanel.Dock="Top" Margin="0,0,0,20">
-            <TextBlock Text="Головна"
-                       FontSize="26"
-                       FontWeight="Bold"
-                       Foreground="#2C3E50"/>
-            <TextBlock Text="Ваш денний прогрес харчування"
-                       FontSize="14"
-                       Foreground="#888"
-                       Margin="0,4,0,0"/>
+        <TextBlock Text="Головна" Classes="pageTitle"/>
+        <TextBlock Text="Ваш денний прогрес харчування" Classes="pageSubtitle"/>
+
+        <Border Height="1" Background="#DDDDDD" Margin="0,5,0,5"/>
+
+        <StackPanel Spacing="10">
+
+            <Border Background="#F5F5F5" Padding="15">
+                <StackPanel>
+                    <TextBlock Text="З'їдено" Foreground="#555" FontSize="13"/>
+                    <TextBlock Text="0 ккал" FontSize="22" FontWeight="Bold"/>
+                </StackPanel>
+            </Border>
+
+            <Border Background="#F5F5F5" Padding="15">
+                <StackPanel>
+                    <TextBlock Text="Денна норма" Foreground="#555" FontSize="13"/>
+                    <TextBlock Text="2000 ккал" FontSize="22" FontWeight="Bold"/>
+                </StackPanel>
+            </Border>
+
+            <Border Background="#F5F5F5" Padding="15">
+                <StackPanel>
+                    <TextBlock Text="Залишилось" Foreground="#555" FontSize="13"/>
+                    <TextBlock Text="2000 ккал" FontSize="22" FontWeight="Bold"/>
+                </StackPanel>
+            </Border>
+
         </StackPanel>
 
-        <Grid>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="*"/>
-            </Grid.RowDefinitions>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>
-            </Grid.ColumnDefinitions>
-
-            <Border Grid.Row="0" Grid.Column="0"
-                    Background="#E8F5E9"
-                    CornerRadius="12"
-                    Padding="20"
-                    Margin="0,0,10,10">
-                <StackPanel>
-                    <TextBlock Text="З'їдено"
-                               FontSize="13"
-                               Foreground="#555"/>
-                    <TextBlock Text="0 ккал"
-                               FontSize="28"
-                               FontWeight="Bold"
-                               Foreground="#2E7D32"
-                               Margin="0,5,0,0"/>
-                </StackPanel>
-            </Border>
-
-            <Border Grid.Row="0" Grid.Column="1"
-                    Background="#E3F2FD"
-                    CornerRadius="12"
-                    Padding="20"
-                    Margin="10,0,0,10">
-                <StackPanel>
-                    <TextBlock Text="Денна норма"
-                               FontSize="13"
-                               Foreground="#555"/>
-                    <TextBlock Text="2000 ккал"
-                               FontSize="28"
-                               FontWeight="Bold"
-                               Foreground="#1565C0"
-                               Margin="0,5,0,0"/>
-                </StackPanel>
-            </Border>
-
-            <Border Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2"
-                    Background="#FFF3E0"
-                    CornerRadius="12"
-                    Padding="20"
-                    Margin="0,0,0,10">
-                <StackPanel>
-                    <TextBlock Text="Залишилось на сьогодні"
-                               FontSize="13"
-                               Foreground="#555"/>
-                    <TextBlock Text="2000 ккал"
-                               FontSize="28"
-                               FontWeight="Bold"
-                               Foreground="#E65100"
-                               Margin="0,5,0,0"/>
-                </StackPanel>
-            </Border>
-
-        </Grid>
-
-    </DockPanel>
+    </StackPanel>
 
 </UserControl>

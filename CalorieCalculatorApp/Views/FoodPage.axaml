@@ -2,71 +2,53 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              x:Class="CalorieCalculatorApp.FoodPage">
 
-    <DockPanel Margin="20">
+    <StackPanel Margin="20" Spacing="15">
 
-        <StackPanel DockPanel.Dock="Top" Margin="0,0,0,20">
-            <TextBlock Text="База продуктів"
-                       FontSize="26"
-                       FontWeight="Bold"
-                       Foreground="#2C3E50"/>
-            <TextBlock Text="Список продуктів з калорійністю"
-                       FontSize="14"
-                       Foreground="#888"
-                       Margin="0,4,0,0"/>
-        </StackPanel>
+        <TextBlock Text="База продуктів" Classes="pageTitle"/>
+        <TextBlock Text="Список продуктів з калорійністю" Classes="pageSubtitle"/>
 
-        <Grid DockPanel.Dock="Top" Margin="0,0,0,15">
+        <Border Height="1" Background="#DDDDDD" Margin="0,5,0,5"/>
+
+        <Grid>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="Auto"/>
             </Grid.ColumnDefinitions>
-
             <TextBox Grid.Column="0"
                      PlaceholderText="Пошук продукту..."
-                     Padding="10,8"
-                     CornerRadius="8"
+                     Classes="input"
                      Margin="0,0,10,0"/>
-
             <Button Grid.Column="1"
                     Content="+ Додати продукт"
-                    Background="#2C3E50"
-                    Foreground="White"
-                    Padding="15,8"
-                    CornerRadius="8"/>
+                    Classes="primary"/>
         </Grid>
 
-        <Border Background="#F5F5F5"
-                CornerRadius="12"
-                Padding="20">
+        <Border Background="#F5F5F5" Padding="15">
             <StackPanel Spacing="10">
 
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="100"/>
+                        <ColumnDefinition Width="120"/>
                         <ColumnDefinition Width="80"/>
                         <ColumnDefinition Width="80"/>
                     </Grid.ColumnDefinitions>
-                    <TextBlock Grid.Column="0" Text="Назва"
-                               FontWeight="Bold" Foreground="#555"/>
-                    <TextBlock Grid.Column="1" Text="Калорії/100г"
-                               FontWeight="Bold" Foreground="#555"/>
-                    <TextBlock Grid.Column="2" Text="Білки"
-                               FontWeight="Bold" Foreground="#555"/>
-                    <TextBlock Grid.Column="3" Text="Жири"
-                               FontWeight="Bold" Foreground="#555"/>
+                    <TextBlock Grid.Column="0" Text="Назва" FontWeight="Bold"/>
+                    <TextBlock Grid.Column="1" Text="Калорії/100г" FontWeight="Bold"/>
+                    <TextBlock Grid.Column="2" Text="Білки" FontWeight="Bold"/>
+                    <TextBlock Grid.Column="3" Text="Жири" FontWeight="Bold"/>
                 </Grid>
 
-                <Border Height="1" Background="#DDD"/>
+                <Border Height="1" Background="#DDDDDD"/>
 
                 <TextBlock Text="Продуктів поки немає. Натисніть + Додати продукт"
                            Foreground="#AAA"
                            HorizontalAlignment="Center"
-                           Margin="0,20,0,0"/>
+                           Margin="0,10,0,0"/>
 
             </StackPanel>
         </Border>
 
-    </DockPanel>
+    </StackPanel>
 
 </UserControl>

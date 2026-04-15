@@ -2,43 +2,20 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              x:Class="CalorieCalculatorApp.JournalPage">
 
-    <DockPanel Margin="20">
+    <StackPanel Margin="20" Spacing="15">
 
-        <StackPanel DockPanel.Dock="Top" Margin="0,0,0,20">
-            <TextBlock Text="Журнал харчування"
-                       FontSize="26"
-                       FontWeight="Bold"
-                       Foreground="#2C3E50"/>
-            <TextBlock Text="Список прийомів їжі за сьогодні"
-                       FontSize="14"
-                       Foreground="#888"
-                       Margin="0,4,0,0"/>
+        <TextBlock Text="Журнал харчування" Classes="pageTitle"/>
+        <TextBlock Text="Список прийомів їжі за сьогодні" Classes="pageSubtitle"/>
+
+        <Border Height="1" Background="#DDDDDD" Margin="0,5,0,5"/>
+
+        <StackPanel Orientation="Horizontal" Spacing="10">
+            <Button Content="+ Додати" Classes="primary"/>
+            <Button Content="Редагувати"/>
+            <Button Content="Видалити"/>
         </StackPanel>
 
-        <StackPanel DockPanel.Dock="Top"
-                    Orientation="Horizontal"
-                    Spacing="10"
-                    Margin="0,0,0,15">
-            <Button Content="+ Додати"
-                    Background="#2C3E50"
-                    Foreground="White"
-                    Padding="15,8"
-                    CornerRadius="8"/>
-            <Button Content="Редагувати"
-                    Background="#E0E0E0"
-                    Foreground="#333"
-                    Padding="15,8"
-                    CornerRadius="8"/>
-            <Button Content="Видалити"
-                    Background="#FFEBEE"
-                    Foreground="#C62828"
-                    Padding="15,8"
-                    CornerRadius="8"/>
-        </StackPanel>
-
-        <Border Background="#F5F5F5"
-                CornerRadius="12"
-                Padding="20">
+        <Border Background="#F5F5F5" Padding="15">
             <StackPanel Spacing="10">
 
                 <Grid>
@@ -47,24 +24,21 @@
                         <ColumnDefinition Width="100"/>
                         <ColumnDefinition Width="100"/>
                     </Grid.ColumnDefinitions>
-                    <TextBlock Grid.Column="0" Text="Продукт"
-                               FontWeight="Bold" Foreground="#555"/>
-                    <TextBlock Grid.Column="1" Text="Вага (г)"
-                               FontWeight="Bold" Foreground="#555"/>
-                    <TextBlock Grid.Column="2" Text="Калорії"
-                               FontWeight="Bold" Foreground="#555"/>
+                    <TextBlock Grid.Column="0" Text="Продукт" FontWeight="Bold"/>
+                    <TextBlock Grid.Column="1" Text="Вага (г)" FontWeight="Bold"/>
+                    <TextBlock Grid.Column="2" Text="Калорії" FontWeight="Bold"/>
                 </Grid>
 
-                <Border Height="1" Background="#DDD"/>
+                <Border Height="1" Background="#DDDDDD"/>
 
                 <TextBlock Text="Записів поки немає. Натисніть + Додати"
                            Foreground="#AAA"
                            HorizontalAlignment="Center"
-                           Margin="0,20,0,0"/>
+                           Margin="0,10,0,0"/>
 
             </StackPanel>
         </Border>
 
-    </DockPanel>
+    </StackPanel>
 
 </UserControl>
