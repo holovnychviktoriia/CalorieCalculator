@@ -1,6 +1,9 @@
 <UserControl xmlns="https://github.com/avaloniaui"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             x:Class="CalorieCalculatorApp.FoodPage">
+             xmlns:models="clr-namespace:CalorieCalculatorApp.Models"
+             xmlns:local="clr-namespace:CalorieCalculatorApp"
+             x:Class="CalorieCalculatorApp.FoodPage"
+             x:DataType="local:FoodPage">
 
     <StackPanel Margin="20" Spacing="15">
 
@@ -9,19 +12,36 @@
 
         <Border Height="1" Background="#DDDDDD" Margin="0,5,0,5"/>
 
-        <Grid>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="Auto"/>
-            </Grid.ColumnDefinitions>
-            <TextBox Grid.Column="0"
-                     PlaceholderText="Пошук продукту..."
-                     Classes="input"
-                     Margin="0,0,10,0"/>
-            <Button Grid.Column="1"
-                    Content="+ Додати продукт"
-                    Classes="primary"/>
-        </Grid>
+        <Border Background="#F5F5F5" Padding="15">
+            <StackPanel Spacing="10">
+                <TextBlock Text="Додати новий продукт" FontWeight="Bold"/>
+
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+
+                    <TextBox Grid.Column="0"
+                             Name="InputProductName"
+                             PlaceholderText="Назва продукту..."
+                             Background="White"
+                             Margin="0,0,10,0"/>
+
+                    <TextBox Grid.Column="1"
+                             Name="InputProductCalories"
+                             PlaceholderText="Калорій на 100г..."
+                             Background="White"
+                             Margin="0,0,10,0"/>
+
+                    <Button Grid.Column="2"
+                            Content="+ Додати"
+                            Classes="primary"
+                            Click="BtnAddProduct_Click"/>
+                </Grid>
+            </StackPanel>
+        </Border>
 
         <Border Background="#F5F5F5" Padding="15">
             <StackPanel Spacing="10">
@@ -29,22 +49,28 @@
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="120"/>
-                        <ColumnDefinition Width="80"/>
-                        <ColumnDefinition Width="80"/>
+                        <ColumnDefinition Width="150"/>
                     </Grid.ColumnDefinitions>
                     <TextBlock Grid.Column="0" Text="Назва" FontWeight="Bold"/>
                     <TextBlock Grid.Column="1" Text="Калорії/100г" FontWeight="Bold"/>
-                    <TextBlock Grid.Column="2" Text="Білки" FontWeight="Bold"/>
-                    <TextBlock Grid.Column="3" Text="Жири" FontWeight="Bold"/>
                 </Grid>
 
                 <Border Height="1" Background="#DDDDDD"/>
 
-                <TextBlock Text="Продуктів поки немає. Натисніть + Додати продукт"
-                           Foreground="#AAA"
-                           HorizontalAlignment="Center"
-                           Margin="0,10,0,0"/>
+                <ItemsControl ItemsSource="{Binding Products}">
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate DataType="models:Product">
+                            <Grid Margin="0,5,0,5">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="150"/>
+                                </Grid.ColumnDefinitions>
+                                <TextBlock Grid.Column="0" Text="{Binding Name}"/>
+                                <TextBlock Grid.Column="1" Text="{Binding CaloriesPer100g}"/>
+                            </Grid>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
 
             </StackPanel>
         </Border>

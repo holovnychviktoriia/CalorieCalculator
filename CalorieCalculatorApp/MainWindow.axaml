@@ -74,28 +74,8 @@
                 BorderBrush="#30FFFFFF"
                 BorderThickness="1">
 
-            <Grid>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="*"/>
-                    <RowDefinition Height="40"/>
-                </Grid.RowDefinitions>
+            <ContentControl Name="MainContent"/>
 
-                <ContentControl Grid.Row="0"
-                                Name="MainContent"/>
-
-                <Border Grid.Row="1"
-                        Background="Aquamarine"
-                        CornerRadius="0,0,15,15">
-
-                    <TextBlock Name="StatusBar"
-                               Text="Готово"
-                               Foreground="#333"
-                               Padding="10"
-                               FontSize="12"
-                               VerticalAlignment="Center"/>
-                </Border>
-
-            </Grid>
         </Border>
 
     </Grid>

@@ -1,6 +1,8 @@
 <UserControl xmlns="https://github.com/avaloniaui"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             x:Class="CalorieCalculatorApp.SettingsPage">
+             xmlns:models="clr-namespace:CalorieCalculatorApp.Models"
+             x:Class="CalorieCalculatorApp.SettingsPage"
+             x:DataType="models:UserSettings">
 
     <StackPanel Margin="20" Spacing="15">
 
@@ -18,6 +20,7 @@
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="150"/>
@@ -27,7 +30,7 @@
             <TextBlock Grid.Row="0" Grid.Column="0" Text="Ім'я:"
                        VerticalAlignment="Center" Margin="0,0,0,12"/>
             <TextBox Grid.Row="0" Grid.Column="1"
-                     Name="InputName"
+                     Text="{Binding Name, Mode=TwoWay}"
                      PlaceholderText="Введіть ім'я..."
                      Background="#EEEEEE"
                      Margin="0,0,0,12"/>
@@ -35,7 +38,7 @@
             <TextBlock Grid.Row="1" Grid.Column="0" Text="Вік:"
                        VerticalAlignment="Center" Margin="0,0,0,12"/>
             <TextBox Grid.Row="1" Grid.Column="1"
-                     Name="InputAge"
+                     Text="{Binding Age, Mode=TwoWay}"
                      PlaceholderText="Введіть вік..."
                      Background="#EEEEEE"
                      Margin="0,0,0,12"/>
@@ -43,7 +46,7 @@
             <TextBlock Grid.Row="2" Grid.Column="0" Text="Вага (кг):"
                        VerticalAlignment="Center" Margin="0,0,0,12"/>
             <TextBox Grid.Row="2" Grid.Column="1"
-                     Name="InputWeight"
+                     Text="{Binding Weight, Mode=TwoWay}"
                      PlaceholderText="Введіть вагу..."
                      Background="#EEEEEE"
                      Margin="0,0,0,12"/>
@@ -51,7 +54,7 @@
             <TextBlock Grid.Row="3" Grid.Column="0" Text="Зріст (см):"
                        VerticalAlignment="Center" Margin="0,0,0,12"/>
             <TextBox Grid.Row="3" Grid.Column="1"
-                     Name="InputHeight"
+                     Text="{Binding Height, Mode=TwoWay}"
                      PlaceholderText="Введіть зріст..."
                      Background="#EEEEEE"
                      Margin="0,0,0,12"/>
@@ -73,11 +76,16 @@
                     Click="BtnSave_Click"/>
 
             <TextBlock Grid.Row="6" Grid.Column="1"
-                       Name="ResultText"
-                       Text=""
+                       Text="{Binding DailyCalorieGoal, StringFormat='Ваша денна норма: {0} ккал'}"
                        FontWeight="Bold"
                        Foreground="#2C3E50"
-                       FontSize="16"/>
+                       FontSize="16"
+                       Margin="0,0,0,8"/>
+
+            <TextBlock Grid.Row="7" Grid.Column="1"
+                       Text="{Binding ErrorMessage}"
+                       Foreground="Red"
+                       FontSize="13"/>
 
         </Grid>
 

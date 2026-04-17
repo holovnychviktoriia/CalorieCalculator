@@ -11,72 +11,81 @@ public partial class SettingsPage : UserControl
     public SettingsPage()
     {
         AvaloniaXamlLoader.Load(this);
+        DataContext = _settings;
     }
 
     public void SetSettings(UserSettings settings)
     {
         _settings = settings;
+        DataContext = _settings;
 
-        var nameBox = this.FindControl<TextBox>("InputName");
-        var ageBox = this.FindControl<TextBox>("InputAge");
-        var weightBox = this.FindControl<TextBox>("InputWeight");
-        var heightBox = this.FindControl<TextBox>("InputHeight");
         var femaleRadio = this.FindControl<RadioButton>("RadioFemale");
         var maleRadio = this.FindControl<RadioButton>("RadioMale");
 
-        if (nameBox != null) nameBox.Text = settings.Name;
-        if (ageBox != null) ageBox.Text = settings.Age.ToString();
-        if (weightBox != null) weightBox.Text = settings.Weight.ToString();
-        if (heightBox != null) heightBox.Text = settings.Height.ToString();
         if (femaleRadio != null) femaleRadio.IsChecked = settings.Gender == "Жінка";
         if (maleRadio != null) maleRadio.IsChecked = settings.Gender == "Чоловік";
     }
 
     public void BtnSave_Click(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
     {
-        var nameBox = this.FindControl<TextBox>("InputName");
-        var ageBox = this.FindControl<TextBox>("InputAge");
-        var weightBox = this.FindControl<TextBox>("InputWeight");
-        var heightBox = this.FindControl<TextBox>("InputHeight");
         var maleRadio = this.FindControl<RadioButton>("RadioMale");
-        var resultText = this.FindControl<TextBlock>("ResultText");
 
-        if (string.IsNullOrWhiteSpace(nameBox?.Text) ||
-            string.IsNullOrWhiteSpace(ageBox?.Text) ||
-            string.IsNullOrWhiteSpace(weightBox?.Text) ||
-            string.IsNullOrWhiteSpace(heightBox?.Text))
+        _settings.ErrorMessage = "";
+
+        if (string.IsNullOrWhiteSpace(_settings.Name) ||
+            string.IsNullOrWhiteSpace(_settings.Age) ||
+            string.IsNullOrWhiteSpace(_settings.Weight) ||
+            string.IsNullOrWhiteSpace(_settings.Height))
         {
-            if (resultText != null)
-                resultText.Text = "Заповніть всі поля!";
+            _settings.ErrorMessage = "Заповніть всі поля!";
+            _settings.DailyCalorieGoal = 0;
             return;
         }
 
-        if (!double.TryParse(weightBox?.Text, out double weight) ||
-            !double.TryParse(heightBox?.Text, out double height) ||
-            !int.TryParse(ageBox?.Text, out int age))
+        if (!int.TryParse(_settings.Age, out int age))
         {
-            if (resultText != null)
-                resultText.Text = "Вік, вага та зріст мають бути числами!";
+            _settings.ErrorMessage = "Вік має бути числом!";
+            _settings.DailyCalorieGoal = 0;
             return;
         }
 
-        if (age < 5 || age > 120 || weight < 20 || weight > 300 || height < 50 || height > 250)
+        if (!double.TryParse(_settings.Weight, out double weight))
         {
-            if (resultText != null)
-                resultText.Text = "Введіть реалістичні дані!";
+            _settings.ErrorMessage = "Вага має бути числом!";
+            _settings.DailyCalorieGoal = 0;
             return;
         }
 
-        _settings.Name = nameBox?.Text ?? "";
+        if (!double.TryParse(_settings.Height, out double height))
+        {
+            _settings.ErrorMessage = "Зріст має бути числом!";
+            _settings.DailyCalorieGoal = 0;
+            return;
+        }
+
+        if (age < 5 || age > 120)
+        {
+            _settings.ErrorMessage = "Вік має бути від 5 до 120!";
+            _settings.DailyCalorieGoal = 0;
+            return;
+        }
+
+        if (weight < 20 || weight > 300)
+        {
+            _settings.ErrorMessage = "Вага має бути від 20 до 300 кг!";
+            _settings.DailyCalorieGoal = 0;
+            return;
+        }
+
+        if (height < 50 || height > 250)
+        {
+            _settings.ErrorMessage = "Зріст має бути від 50 до 250 см!";
+            _settings.DailyCalorieGoal = 0;
+            return;
+        }
+
         _settings.Gender = maleRadio?.IsChecked == true ? "Чоловік" : "Жінка";
-        _settings.Weight = weight;
-        _settings.Height = height;
-        _settings.Age = age;
-
         _settings.DailyCalorieGoal = _settings.CalculateDailyCalories();
-
-        if (resultText != null)
-            resultText.Text = $"Ваша денна норма: {_settings.DailyCalorieGoal} ккал";
     }
 
     public UserSettings GetSettings() => _settings;
