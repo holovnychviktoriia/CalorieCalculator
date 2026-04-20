@@ -7,76 +7,76 @@
         TransparencyLevelHint="AcrylicBlur"
         Background="#FFFFFF">
 
-    <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="250"/>
-            <ColumnDefinition Width="*"/>
-        </Grid.ColumnDefinitions>
+        <Grid>
+                <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="250"/>
+                        <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
 
-        <StackPanel Grid.Column="0"
-                    Background="#EE2C3E50"
-                    Spacing="10"
-                    Margin="0">
+                <StackPanel Grid.Column="0"
+                            Background="#EE2C3E50"
+                            Spacing="10"
+                            Margin="0">
 
-            <TextBlock Text="Головнич Вікторія КН21"
-                       Foreground="White"
-                       FontSize="14"
-                       FontWeight="Bold"
-                       Margin="15,20,15,0"
-                       TextDecorations="Underline"
-                       TextWrapping="Wrap"/>
+                        <TextBlock Text="Головнич Вікторія КН21"
+                                   Foreground="White"
+                                   FontSize="14"
+                                   FontWeight="Bold"
+                                   Margin="15,20,15,0"
+                                   TextDecorations="Underline"
+                                   TextWrapping="Wrap"/>
 
-            <TextBlock Text="Калькулятор калорій"
-                       Foreground="White"
-                       FontSize="18"
-                       FontWeight="Bold"
-                       Margin="15,0,15,20"
-                       TextWrapping="Wrap"/>
+                        <TextBlock Text="Калькулятор калорій"
+                                   Foreground="White"
+                                   FontSize="18"
+                                   FontWeight="Bold"
+                                   Margin="15,0,15,20"
+                                   TextWrapping="Wrap"/>
 
-            <Button Name="BtnHome" Content="Головна"
-                    Background="#30FFFFFF"
-                    Foreground="White"
-                    BorderBrush="#40FFFFFF"
-                    HorizontalAlignment="Stretch"
-                    Margin="10,0"
-                    Click="BtnHome_Click"/>
+                        <Button Name="BtnHome" Content="Головна"
+                                Background="#30FFFFFF"
+                                Foreground="White"
+                                BorderBrush="#40FFFFFF"
+                                HorizontalAlignment="Stretch"
+                                Margin="10,0"
+                                Click="BtnHome_Click"/>
 
-            <Button Name="BtnJournal" Content="Журнал харчування"
-                    Background="#30FFFFFF"
-                    Foreground="White"
-                    BorderBrush="#40FFFFFF"
-                    HorizontalAlignment="Stretch"
-                    Margin="10,0"
-                    Click="BtnJournal_Click"/>
+                        <Button Name="BtnJournal" Content="Журнал харчування"
+                                Background="#30FFFFFF"
+                                Foreground="White"
+                                BorderBrush="#40FFFFFF"
+                                HorizontalAlignment="Stretch"
+                                Margin="10,0"
+                                Click="BtnJournal_Click"/>
 
-            <Button Name="BtnFood" Content="База продуктів"
-                    Background="#30FFFFFF"
-                    Foreground="White"
-                    BorderBrush="#40FFFFFF"
-                    HorizontalAlignment="Stretch"
-                    Margin="10,0"
-                    Click="BtnFood_Click"/>
+                        <Button Name="BtnFood" Content="База продуктів"
+                                Background="#30FFFFFF"
+                                Foreground="White"
+                                BorderBrush="#40FFFFFF"
+                                HorizontalAlignment="Stretch"
+                                Margin="10,0"
+                                Click="BtnFood_Click"/>
 
-            <Button Name="BtnSettings" Content="Налаштування"
-                    Background="#30FFFFFF"
-                    Foreground="White"
-                    BorderBrush="#40FFFFFF"
-                    HorizontalAlignment="Stretch"
-                    Margin="10,0"
-                    Click="BtnSettings_Click"/>
+                        <Button Name="BtnSettings" Content="Налаштування"
+                                Background="#30FFFFFF"
+                                Foreground="White"
+                                BorderBrush="#40FFFFFF"
+                                HorizontalAlignment="Stretch"
+                                Margin="10,0"
+                                Click="BtnSettings_Click"/>
 
-        </StackPanel>
+                </StackPanel>
 
-        <Border Grid.Column="1"
-                Margin="15"
-                CornerRadius="15"
-                Background="#44FFFFFF"
-                BorderBrush="#30FFFFFF"
-                BorderThickness="1">
+                <Border Grid.Column="1"
+                        Margin="15"
+                        CornerRadius="15"
+                        Background="#44FFFFFF"
+                        BorderBrush="#30FFFFFF"
+                        BorderThickness="1">
 
-            <ContentControl Name="MainContent"/>
+                        <ContentControl Name="MainContent"/>
 
-        </Border>
+                </Border>
 
-    </Grid>
+        </Grid>
 </Window>

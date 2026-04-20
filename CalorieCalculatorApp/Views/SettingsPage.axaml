@@ -64,8 +64,8 @@
             <StackPanel Grid.Row="4" Grid.Column="1"
                         Orientation="Horizontal"
                         Spacing="15" Margin="0,0,0,12">
-                <RadioButton Name="RadioFemale" Content="Жінка" IsChecked="True"/>
-                <RadioButton Name="RadioMale" Content="Чоловік"/>
+                <RadioButton Name="RadioFemale" GroupName="Gender" Content="Жінка" IsChecked="True"/>
+                <RadioButton Name="RadioMale" GroupName="Gender" Content="Чоловік"/>
             </StackPanel>
 
             <Button Grid.Row="5" Grid.Column="1"

@@ -1,29 +1,24 @@
 using Avalonia.Controls;
 using Avalonia.Markup.Xaml;
 using CalorieCalculatorApp.Models;
+using CalorieCalculatorApp.Services;
 
 namespace CalorieCalculatorApp;
 
 public partial class SettingsPage : UserControl
 {
-    private UserSettings _settings = new UserSettings();
+    private UserSettings _settings => DataService.Settings;
 
     public SettingsPage()
     {
         AvaloniaXamlLoader.Load(this);
         DataContext = _settings;
-    }
-
-    public void SetSettings(UserSettings settings)
-    {
-        _settings = settings;
-        DataContext = _settings;
 
         var femaleRadio = this.FindControl<RadioButton>("RadioFemale");
         var maleRadio = this.FindControl<RadioButton>("RadioMale");
 
-        if (femaleRadio != null) femaleRadio.IsChecked = settings.Gender == "Жінка";
-        if (maleRadio != null) maleRadio.IsChecked = settings.Gender == "Чоловік";
+        if (femaleRadio != null) femaleRadio.IsChecked = _settings.Gender == "Жінка";
+        if (maleRadio != null) maleRadio.IsChecked = _settings.Gender == "Чоловік";
     }
 
     public void BtnSave_Click(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
@@ -86,7 +81,7 @@ public partial class SettingsPage : UserControl
 
         _settings.Gender = maleRadio?.IsChecked == true ? "Чоловік" : "Жінка";
         _settings.DailyCalorieGoal = _settings.CalculateDailyCalories();
-    }
 
-    public UserSettings GetSettings() => _settings;
+        DataService.Save();
+    }
 }

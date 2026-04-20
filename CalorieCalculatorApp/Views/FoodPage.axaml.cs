@@ -1,22 +1,19 @@
+using System.Collections.ObjectModel;
 using Avalonia.Controls;
 using Avalonia.Markup.Xaml;
 using CalorieCalculatorApp.Models;
-using System.Collections.ObjectModel;
+using CalorieCalculatorApp.Services;
 
 namespace CalorieCalculatorApp;
 
 public partial class FoodPage : UserControl
 {
-    public ObservableCollection<Product> Products { get; set; } = new ObservableCollection<Product>();
+    public ObservableCollection<Product> Products => DataService.Products;
 
     public FoodPage()
     {
         AvaloniaXamlLoader.Load(this);
         DataContext = this;
-
-        Products.Add(new Product { Name = "Яблуко", CaloriesPer100g = 52 });
-        Products.Add(new Product { Name = "Банан", CaloriesPer100g = 89 });
-        Products.Add(new Product { Name = "Куряча грудка", CaloriesPer100g = 165 });
     }
 
     public void BtnAddProduct_Click(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
@@ -35,5 +32,7 @@ public partial class FoodPage : UserControl
 
         nameBox.Text = "";
         caloriesBox!.Text = "";
+
+        DataService.Save();
     }
 }
