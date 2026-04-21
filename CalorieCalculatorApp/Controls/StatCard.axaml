@@ -1,0 +1,12 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             x:Class="CalorieCalculatorApp.Controls.StatCard">
+
+    <Border Background="#F5F5F5" Padding="15" CornerRadius="8">
+        <StackPanel>
+            <TextBlock Name="LabelText" Foreground="#555" FontSize="13"/>
+            <TextBlock Name="ValueText" FontSize="22" FontWeight="Bold"/>
+        </StackPanel>
+    </Border>
+
+</UserControl>

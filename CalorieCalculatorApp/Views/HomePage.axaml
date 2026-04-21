@@ -1,5 +1,6 @@
 <UserControl xmlns="https://github.com/avaloniaui"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:controls="clr-namespace:CalorieCalculatorApp.Controls"
              x:Class="CalorieCalculatorApp.HomePage">
 
     <StackPanel Margin="20" Spacing="15">
@@ -10,29 +11,18 @@
         <Border Height="1" Background="#DDDDDD" Margin="0,5,0,5"/>
 
         <StackPanel Spacing="10">
-
-            <Border Background="#F5F5F5" Padding="15">
-                <StackPanel>
-                    <TextBlock Text="З'їдено" Foreground="#555" FontSize="13"/>
-                    <TextBlock Text="0 ккал" FontSize="22" FontWeight="Bold"/>
-                </StackPanel>
-            </Border>
-
-            <Border Background="#F5F5F5" Padding="15">
-                <StackPanel>
-                    <TextBlock Text="Денна норма" Foreground="#555" FontSize="13"/>
-                    <TextBlock Text="2000 ккал" FontSize="22" FontWeight="Bold"/>
-                </StackPanel>
-            </Border>
-
-            <Border Background="#F5F5F5" Padding="15">
-                <StackPanel>
-                    <TextBlock Text="Залишилось" Foreground="#555" FontSize="13"/>
-                    <TextBlock Text="2000 ккал" FontSize="22" FontWeight="Bold"/>
-                </StackPanel>
-            </Border>
-
+            <controls:StatCard Name="EatenCard" Label="З'їдено"/>
+            <controls:StatCard Name="GoalCard" Label="Денна норма"/>
+            <controls:StatCard Name="RemainingCard" Label="Залишилось"/>
         </StackPanel>
+
+        <Border Background="#F5F5F5" Padding="15" CornerRadius="8" Margin="0,10,0,0">
+            <TextBlock Name="StatusText"
+                       Text=""
+                       FontSize="14"
+                       FontWeight="Bold"
+                       HorizontalAlignment="Center"/>
+        </Border>
 
     </StackPanel>
 

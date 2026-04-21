@@ -1,44 +1,139 @@
 <UserControl xmlns="https://github.com/avaloniaui"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:models="clr-namespace:CalorieCalculatorApp.Models"
              x:Class="CalorieCalculatorApp.JournalPage">
 
-    <StackPanel Margin="20" Spacing="15">
+    <ScrollViewer>
+        <StackPanel Margin="20" Spacing="15">
 
-        <TextBlock Text="Журнал харчування" Classes="pageTitle"/>
-        <TextBlock Text="Список прийомів їжі за сьогодні" Classes="pageSubtitle"/>
+            <TextBlock Text="Журнал харчування" Classes="pageTitle"/>
+            <TextBlock Text="Список прийомів їжі за сьогодні" Classes="pageSubtitle"/>
 
-        <Border Height="1" Background="#DDDDDD" Margin="0,5,0,5"/>
+            <Border Height="1" Background="#DDDDDD" Margin="0,5,0,5"/>
 
-        <StackPanel Orientation="Horizontal" Spacing="10">
-            <Button Content="+ Додати" Classes="primary"/>
-            <Button Content="Редагувати"/>
-            <Button Content="Видалити"/>
+            <Border Background="#F5F5F5" Padding="15" CornerRadius="8">
+                <StackPanel Spacing="10">
+                    <TextBlock Name="FormTitle" Text="Додати прийом їжі" FontWeight="Bold" FontSize="15"/>
+
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="120"/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+
+                        <ComboBox Grid.Column="0"
+                                  Name="ProductSelect"
+                                  PlaceholderText="Оберіть продукт..."
+                                  HorizontalAlignment="Stretch"
+                                  Margin="0,0,10,0">
+                            <ComboBox.ItemTemplate>
+                                <DataTemplate DataType="models:Product">
+                                    <TextBlock Text="{Binding Name}"/>
+                                </DataTemplate>
+                            </ComboBox.ItemTemplate>
+                        </ComboBox>
+
+                        <TextBox Grid.Column="1"
+                                 Name="InputWeight"
+                                 PlaceholderText="Вага (г)..."
+                                 Background="White"
+                                 Margin="0,0,10,0"/>
+
+                        <StackPanel Grid.Column="2" Orientation="Horizontal" Spacing="5">
+                            <Button Name="BtnSaveMeal"
+                                    Content="+ Додати"
+                                    Classes="primary"
+                                    Click="BtnSaveMeal_Click"/>
+                            <Button Name="BtnCancelEdit"
+                                    Content="Скасувати"
+                                    IsVisible="False"
+                                    Click="BtnCancelEdit_Click"/>
+                        </StackPanel>
+                    </Grid>
+
+                    <TextBlock Name="FormError"
+                               Foreground="Red"
+                               FontSize="13"/>
+                </StackPanel>
+            </Border>
+
+            <Border Background="#F5F5F5" Padding="15" CornerRadius="8">
+                <StackPanel Spacing="10">
+
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="90"/>
+                            <ColumnDefinition Width="90"/>
+                            <ColumnDefinition Width="170"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Grid.Column="0" Text="Продукт" FontWeight="Bold"/>
+                        <TextBlock Grid.Column="1" Text="Вага (г)" FontWeight="Bold"/>
+                        <TextBlock Grid.Column="2" Text="Калорії" FontWeight="Bold"/>
+                        <TextBlock Grid.Column="3" Text="Дії" FontWeight="Bold" HorizontalAlignment="Center"/>
+                    </Grid>
+
+                    <Border Height="1" Background="#DDDDDD"/>
+
+                    <ItemsControl Name="MealsList">
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate DataType="models:Meal">
+                                <Grid Margin="0,4,0,4">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="90"/>
+                                        <ColumnDefinition Width="90"/>
+                                        <ColumnDefinition Width="170"/>
+                                    </Grid.ColumnDefinitions>
+                                    <TextBlock Grid.Column="0" Text="{Binding ProductName}" VerticalAlignment="Center"/>
+                                    <TextBlock Grid.Column="1" Text="{Binding WeightGrams}" VerticalAlignment="Center"/>
+                                    <TextBlock Grid.Column="2" Text="{Binding Calories}" VerticalAlignment="Center"/>
+                                    <StackPanel Grid.Column="3" Orientation="Horizontal" Spacing="5" HorizontalAlignment="Center">
+                                        <Button Content="Редагувати"
+                                                Tag="{Binding Id}"
+                                                Click="BtnEditMeal_Click"
+                                                FontSize="12"
+                                                Padding="8,4"/>
+                                        <Button Content="Видалити"
+                                                Tag="{Binding Id}"
+                                                Click="BtnDeleteMeal_Click"
+                                                FontSize="12"
+                                                Padding="8,4"
+                                                Background="#E74C3C"
+                                                Foreground="White"/>
+                                    </StackPanel>
+                                </Grid>
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                    </ItemsControl>
+
+                    <TextBlock Name="EmptyLabel"
+                               Text="Записів поки немає. Оберіть продукт і натисніть + Додати"
+                               Foreground="#AAA"
+                               HorizontalAlignment="Center"
+                               Margin="0,10,0,10"/>
+
+                    <Border Height="1" Background="#DDDDDD" Margin="0,5,0,5"/>
+
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Grid.Column="0" Text="Разом за день:" FontWeight="Bold" FontSize="15"/>
+                        <TextBlock Grid.Column="1"
+                                   Name="TotalText"
+                                   Text="0 ккал"
+                                   FontWeight="Bold"
+                                   FontSize="15"
+                                   Foreground="#2C3E50"/>
+                    </Grid>
+
+                </StackPanel>
+            </Border>
+
         </StackPanel>
-
-        <Border Background="#F5F5F5" Padding="15">
-            <StackPanel Spacing="10">
-
-                <Grid>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="100"/>
-                        <ColumnDefinition Width="100"/>
-                    </Grid.ColumnDefinitions>
-                    <TextBlock Grid.Column="0" Text="Продукт" FontWeight="Bold"/>
-                    <TextBlock Grid.Column="1" Text="Вага (г)" FontWeight="Bold"/>
-                    <TextBlock Grid.Column="2" Text="Калорії" FontWeight="Bold"/>
-                </Grid>
-
-                <Border Height="1" Background="#DDDDDD"/>
-
-                <TextBlock Text="Записів поки немає. Натисніть + Додати"
-                           Foreground="#AAA"
-                           HorizontalAlignment="Center"
-                           Margin="0,10,0,0"/>
-
-            </StackPanel>
-        </Border>
-
-    </StackPanel>
+    </ScrollViewer>
 
 </UserControl>
